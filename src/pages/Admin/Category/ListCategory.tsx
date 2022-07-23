@@ -1,20 +1,17 @@
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
-import { Typography, Button, Table, Space } from 'antd';
+import { Typography, Button, Table, Popconfirm } from 'antd';
 import { Link } from 'react-router-dom'
 import { SearchOutlined, PlusOutlined } from '@ant-design/icons';
 const { Paragraph } = Typography
 import type { ColumnsType } from 'antd/es/table';
-import { getAll } from "../../../api/product";
+
+import { listCate } from "../../../api/category";
 
 interface DataType {
+    id?: number
     name: string;
-    saleOffPrice: number;
-    feature: string;
-    description: string;
-    image: string
 }
-
 const columns: ColumnsType<DataType> = [
     {
         title: 'STT',
@@ -23,66 +20,35 @@ const columns: ColumnsType<DataType> = [
         render: index => <a>{index +1}</a>,
     },
     {
-        title: 'Tên sản phẩm',
+        title: 'Tên danh mục',
         dataIndex: 'name',
         key: 'name',
         render: text => <a>{text}</a>,
     },
-    {
-        title: 'Đặc điểm',
-        dataIndex: 'feature',
-        key: 'feature',
-        render: text => <a>{text}</a>,
-    },
-    {
-        title: 'Giá khuyến mãi',
-        dataIndex: 'saleOffPrice',
-        key: 'saleOffPrice',
-    },
-    {
-        title: 'Ảnh sản phẩm',
-        dataIndex: 'image',
-        key: 'image',
-        render: text => <img src={'image'} alt="" />
-    },
-    {
-        title: 'Mô tả',
-        dataIndex: 'description',
-        key: 'description',
-    },
-    {
-        title: 'Action',
-        key: 'action',
-        render: () => (              
-            <Space size="middle">
-            <a href="admin/product/${}/edit">Update</a>
-            <a>Delete</a>
-          </Space>
-            
-        ),
-      },
+    
 ];
 
 
 
-const ProductAdminPage = () => {
+const ListCategoryPage = () => {
     const [dataTable, setDataTable] = useState([])
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await getAll()
+                const data = await listCate()        
                 setDataTable(data.data)
             } catch (err) {
 
             }
         }
+        
         fetchData()
     }, [])
     return (
         <>
             <Breadcrumb>
                 <Typography.Title level={2} style={{ margin: 0 }}>
-                    Điện thoại
+                    Categories
                 </Typography.Title>
                 <Link to="/admin/product/add">
                     <Button type="dashed" shape="circle" icon={<PlusOutlined />} />
@@ -99,4 +65,4 @@ const Breadcrumb = styled.div`
     margin-top: 20px;
 `
 
-export default ProductAdminPage
+export default ListCategoryPage

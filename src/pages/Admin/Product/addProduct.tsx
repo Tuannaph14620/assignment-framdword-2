@@ -39,7 +39,6 @@ const AddProductPage: React.FC = () => {
 				<Col span={14}>
 					<Typography.Title level={5}>Thông tin sản phẩm</Typography.Title>
 					<Form
-						// name="product"
 						initialValues={{}}
 						onFinish={onFinish}
 						onFinishFailed={onFinishFailed}
@@ -61,7 +60,7 @@ const AddProductPage: React.FC = () => {
 									name="originalPrice"
 									label="Giá gốc"
 									labelCol={{ span: 24 }}
-									rules={[{ required: true, message: 'Gía sản phẩm' }]}
+									rules={[{ required: true, message: 'Giá sản phẩm không được để trống' }]}
 								>
 									<InputNumber style={{ width: '100%' }} size="large" />
 								</Form.Item>
@@ -71,7 +70,7 @@ const AddProductPage: React.FC = () => {
 									name="saleOffPrice"
 									label="Giá giảm"
 									labelCol={{ span: 24 }}
-									rules={[{ required: true, message: 'Gía sản phẩm' }]}
+									rules={[{ required: true, message: 'Giá khuyết mãi phải nhỏ hơn giá gốc' }]}
 								>
 									<InputNumber style={{ width: '100%' }} size="large" />
 								</Form.Item>
@@ -80,7 +79,7 @@ const AddProductPage: React.FC = () => {
 								<Form.Item
 									label="Phân loại"
 									name="categories"
-									rules={[{ required: true }]}
+									rules={[{ required: true , message: 'Danh mục không được để trống'}]}
 								>
 									<Select style={{ width: '100%' }} size="large">
 										<Option value="phone">Điện thoại</Option>

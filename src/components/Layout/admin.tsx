@@ -17,7 +17,7 @@ const item3: MenuProps['items'] = [
   { key: "audio", icon: <AudioOutlined />, label: "Âm thanh" },
   {
     key: "categories", icon: <SettingOutlined />,
-    label: <Link to="/admin/categories">Categories</Link>
+    label: <Link to="/admin/category">Categories</Link>
   },
 ]
 

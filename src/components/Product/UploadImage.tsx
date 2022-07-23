@@ -29,7 +29,7 @@ const UploadImage = () => {
             setUploadedImage(data.url)
         } catch (err: any) {
             console.log(err)
-            message.error(JSON.stringify(err.message))
+            message.error('Ảnh phải nhỏ hơn 200kb')
         }
     }
 
@@ -43,9 +43,6 @@ const UploadImage = () => {
                         accept="image/png, image/jpg, image/jpeg, image/gif"
                         name="image" onChange={handleChangeImage} />
                 </UploadIcon>
-                {/* <Button type="dashed" shape="circle" icon={<PlusCircleOutlined />} />
-                <Typography.Title level={5}>Thêm ảnh</Typography.Title> */}
-
                 {uploadedImage && (
                     <ImagePreview style={{}} src={uploadedImage} alt="Image" />
                 )}

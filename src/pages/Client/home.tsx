@@ -5,7 +5,7 @@ import Header from '../../components/Header'
 const HomePage = () => {
     return (
         <>
-            <h1>User Page</h1>
+            <h1>Home Page</h1>
         </>
     )
 }
